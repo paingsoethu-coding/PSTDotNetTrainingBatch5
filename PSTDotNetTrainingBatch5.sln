@@ -5,6 +5,11 @@ VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.ConsoleApp", "PSTDotNetTrainingBatch5.ConsoleApp\PSTDotNetTrainingBatch5.ConsoleApp.csproj", "{067456E6-4321-482A-9A94-46368F084223}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{80B4AD79-A648-45C2-8ED7-3B2CD739E6F3}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
