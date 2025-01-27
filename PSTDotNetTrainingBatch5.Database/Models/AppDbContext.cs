@@ -21,6 +21,16 @@ public partial class AppDbContext : DbContext
     // Connection ဖြတ်ရန်လိုမယ် မဟုတ်ရင် အသေဖြစ်နေမှာပါ
     // overrid onconfig လိုအပ်မှ ပြန်ထည့်လို့ရပါတယ်
     #endregion
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            string connectionString = "Data Source= MSI\\SQLEXPRESS2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sasa; TrustServerCertificate=True;";
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblBlog>(entity =>
