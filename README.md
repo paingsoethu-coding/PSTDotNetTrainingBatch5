@@ -34,4 +34,8 @@ PST => Collin
 Bank +5000
 
 
-efcore database first (manual, auto) / code first
+efcore database first (manual, auto) / code first 
+
+dotnet ef dbcontext scaffold "Server=MSI\SQLEXPRESS2022; Database=DotNetTrainingBatch5; User Id=sa; Password=sasa; TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -c AppDbContext -tblname -f
+
+dotnet ef dbcontext scaffold "Server=MSI\SQLEXPRESS2022; Database=DotNetTrainingBatch5; User Id=sa; Password=sasa; TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -c AppDbContext -f
