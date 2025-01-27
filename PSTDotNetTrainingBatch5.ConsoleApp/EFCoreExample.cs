@@ -68,7 +68,15 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
                 .AsNoTracking() // db data ကို copy ယူပြီး အလုပ်လုပ်တာပါ
                 .FirstOrDefault(x => x.BlogId == id);
 
-            // db မှာဆိုရင် with (nolock) နဲတူပါတယ် (ဖတ်ထားရန်)
+            #region With (NOLOCK)
+            // .AsNoTracking() က db data ကို copy ယူပြီး အလုပ်လုပ်တာပါ
+            // db မှာဆိုရင် With (NOLOCK) နဲတူပါတယ် (ဖတ်ထားရန်)
+            // With (NOLOCK) က query data ကို other transactions တွေကိုပြီးအောင် စောင့်နေစရာမလိုပဲ အလုပ်လုပ်တာပါ
+            // Performance ကောင်းဖို့နဲ Reporting or Analytics တို့မှာဆိုရင် 100% မှန်နေဖို့မလိုတဲ့နေရာမှာဆို သုံးလို့ကောင်းတယ်
+            // မကောင်းတာက Real time data ကိုမရတော့ပါဘူး
+
+            #endregion
+
 
             if (item is null)
             {

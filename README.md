@@ -32,3 +32,6 @@ PST => Collin
 -5000 => +5000
 
 Bank +5000
+
+
+efcore database first (manual, auto) / code first
