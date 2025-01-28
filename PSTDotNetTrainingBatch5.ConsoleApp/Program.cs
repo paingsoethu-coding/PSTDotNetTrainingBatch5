@@ -97,11 +97,14 @@ using System.Data.SqlClient;
 //dapperExample.Delete();
 
 EFCoreExample eFCoreExample = new EFCoreExample();
-//eFCoreExample.Read();
+eFCoreExample.Read();
 //eFCoreExample.Create("Test-3", "PST-3", "Omen-3");
 //eFCoreExample.Edit(11);
 //eFCoreExample.Update(11, "Test-11", "PST-11", "Omen-11");
 //eFCoreExample.Delete(12);
-eFCoreExample.DeleteFlag(13);
+//eFCoreExample.DeleteFlag(13);
+
+//string query = " [BlogTitle] = @BlogTitle, ";
+//Console.WriteLine(query.Substring(0, query.Length - 2)); // Substring Delete လုပ်တာပါ
 
 Console.ReadKey();

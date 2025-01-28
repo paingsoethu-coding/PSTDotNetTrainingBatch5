@@ -15,7 +15,7 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
 {
     public class DapperExample
     {
-        private readonly string _connectionString = "Data Source= MSI\\SQLEXPRESS2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sasa;";
+        private readonly string _connectionString = "Data Source= MSI\\SQLEXPRESS2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sasa; TrustServerCertificate=True;";
 
         #region Dapper ကို သုံးခြင်း
 
@@ -89,9 +89,7 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
                     BlogContent = content
                 });
                 Console.WriteLine(result == 1 ? "Saving Successful." : "Saving Failed.");
-
             }
-
         }
 
         public void Edit(int Id)

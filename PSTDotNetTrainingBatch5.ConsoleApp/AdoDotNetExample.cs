@@ -10,7 +10,7 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
 {
     public class AdoDotNetExample
     {
-        private readonly string _connectionString = "Data Source= MSI\\SQLEXPRESS2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sasa;";
+        private readonly string _connectionString = "Data Source= MSI\\SQLEXPRESS2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sasa; TrustServerCertificate=True";
         public void Read()
         {
             //Console.WriteLine("Connection String: " + _connectionString);
