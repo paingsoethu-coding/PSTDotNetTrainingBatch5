@@ -17,9 +17,10 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<TblBlog> TblBlogs { get; set; }
 
-    #region Connection ဖြတ်ရန်လိုမယ်
+    #region Connection ဖြတ်ရန်လိုမယ် 
     // Connection ဖြတ်ရန်လိုမယ် မဟုတ်ရင် အသေဖြစ်နေမှာပါ
     // overrid onconfig လိုအပ်မှ ပြန်ထည့်လို့ရပါတယ်
+    // လိုအပ်ရင် ပြန်ရေးလို့ရပါတယ်
     #endregion
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
