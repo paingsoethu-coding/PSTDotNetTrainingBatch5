@@ -84,5 +84,69 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
             Console.WriteLine(result == 1 ? "Saving Successful." : "Saving Failed.");
             
         }
+
+        public void Update()
+        {
+            Console.WriteLine("Please Blog ID: ");
+            string? id = Console.ReadLine();
+
+            Console.WriteLine("Please Blog Title: ");
+            string? title = Console.ReadLine();
+
+            Console.WriteLine("Please Blog Author: ");
+            string? author = Console.ReadLine();
+
+            Console.WriteLine("Please Blog Content: ");
+            string? content = Console.ReadLine();
+
+            string query = @"UPDATE [dbo].[Tbl_BLog]
+                           SET [BlogTitle] = @BlogTitle
+                              ,[BlogAuthor] = @BlogAuthor
+                              ,[BlogContent] = @BlogContent
+                              ,[DeleteFlag] = 0
+                         WHERE [BlogId] = @BlogId and [DeleteFlag] != 1";
+
+            try
+            {
+                if (!int.TryParse(id, out int blogId))
+                {
+                    throw new ArgumentNullException("ID must be a valid integer.", nameof(id));
+                }
+
+                int result = _dapperService.Execute(query, new BlogDapperDataModel
+                {
+                    BlogId = int.Parse(id),
+                    BlogTitle = title,
+                    BlogAuthor = author,
+                    BlogContent = content
+                });
+                Console.WriteLine(result == 1 ? "Updating Successful." : "Updating Failed.");
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
+            }
+        }
+
+        public void Delete()
+        {
+            Console.Write("Blog Id: ");
+            string? id = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(id)) { return; }
+
+            string query = @"UPDATE [dbo].[Tbl_BLog]
+                               SET [DeleteFlag] = 1
+                             WHERE [BlogId] = @BlogId and [DeleteFlag] = 0";
+
+            int result = _dapperService.Execute(query, new BlogDapperDataModel
+            {
+                BlogId = int.Parse(id)
+            });
+            Console.WriteLine(result == 1 ? "Deleting Successful." : "Deleting Failed.");
+
+        }
     }
 }

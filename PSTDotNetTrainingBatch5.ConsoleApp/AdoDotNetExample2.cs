@@ -116,13 +116,60 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
                                         ,@BlogContent
                                         ,'0')";
 
-            int result = _adoDotNetService.Excute(query, 
+            int result = _adoDotNetService.Execute(query, 
                 new SqlParametersModel("@BlogTitle", title),
                 new SqlParametersModel("@BlogAuthor", author),
                 new SqlParametersModel("@BlogContent", content));
             
             Console.WriteLine(result == 1 ? "Insert Successful." : "Inesert Failed.");
 
+        }
+
+        public void Update()
+        {
+            Console.WriteLine("Please Blog ID: ");
+            string? id = Console.ReadLine();
+
+            Console.WriteLine("Please Blog Title: ");
+            string? title = Console.ReadLine();
+
+            Console.WriteLine("Please Blog Author: ");
+            string? author = Console.ReadLine();
+
+            Console.WriteLine("Please Blog Content: ");
+            string? content = Console.ReadLine();
+
+            string query = @"UPDATE [dbo].[Tbl_BLog]
+                               SET [BlogTitle] = @BlogTitle
+                                  ,[BlogAuthor] = @BlogAuthor
+                                  ,[BlogContent] = @BlogContent
+                                  ,[DeleteFlag] = 0
+                             WHERE [BlogId] = @BlogId and [DeleteFlag] != 1";
+
+            int result = _adoDotNetService.Execute(query,
+                new SqlParametersModel("@BlogTitle", id),
+                new SqlParametersModel("@BlogTitle", title),
+                new SqlParametersModel("@BlogAuthor", author),
+                new SqlParametersModel("@BlogContent", content));
+
+            Console.WriteLine(result == 1 ? "Update Successful." : "Update Failed.");
+        }
+
+        public void Delete()
+        {
+            Console.Write("Blog Id: ");
+            string? id = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(id)) { return; }
+
+            string query = @"UPDATE [dbo].[Tbl_BLog]
+                               SET [DeleteFlag] = 1
+                             WHERE [BlogId] = @BlogId and [DeleteFlag] = 0";
+
+            int result = _adoDotNetService.Execute(query,
+                new SqlParametersModel("@BlogId", id));
+
+            Console.WriteLine(result == 1 ? "Delete Successful." : "Delete Failed.");
         }
 
 

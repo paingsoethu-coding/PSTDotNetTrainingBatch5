@@ -36,7 +36,7 @@ namespace PSTDotNetTrainingBatch5.Shared
             return dt;
         }
 
-        public int Excute(string query, params SqlParametersModel[] sqlParameters)
+        public int Execute(string query, params SqlParametersModel[] sqlParameters)
         {
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
