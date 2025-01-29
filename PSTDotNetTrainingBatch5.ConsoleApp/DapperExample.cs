@@ -56,6 +56,8 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
                 string query = @"SELECT * FROM [dbo].[Tbl_BLog] where Tbl_Blog.[DeleteFlag] = 0";
                 var lst = db.Query<BlogDapperDataModel>(query).ToList();
 
+                // T ကို generic class လိုခေါ်တယ်
+
                 foreach (var item in lst)
                 {
                     Console.WriteLine(item.BlogId);
@@ -129,7 +131,6 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
                 Console.WriteLine(item.BlogContent);
 
             }
-
 
         }
 
