@@ -109,3 +109,9 @@ view model (fontend return data) 2 columns
 
 
 --------------------------------------------
+
+File.json
+
+File.json => Read => Convert Object [] => Insert => json => write
+
+--------------------------------------------
