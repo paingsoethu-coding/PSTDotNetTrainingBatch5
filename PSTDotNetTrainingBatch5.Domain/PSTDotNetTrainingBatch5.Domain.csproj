@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PSTDotNetTrainingBatch5.Database\PSTDotNetTrainingBatch5.Database.csproj" />
+    <ProjectReference Include="..\PSTDotNetTrainingBatch5.Shared\PSTDotNetTrainingBatch5.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

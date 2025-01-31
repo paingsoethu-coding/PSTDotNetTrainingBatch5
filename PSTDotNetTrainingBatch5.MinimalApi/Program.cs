@@ -139,7 +139,8 @@ app.UseHttpsRedirection();
 //  "a".Test();
 #endregion
 
-app.UseBlogEndpoints();
+//app.UseBlogEndpoints();
+app.UseBlogServiceEndpoint();
 
 app.Run();
 

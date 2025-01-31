@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PSTDotNetTrainingBatch5.Database\PSTDotNetTrainingBatch5.Database.csproj" />
+    <ProjectReference Include="..\PSTDotNetTrainingBatch5.Domain\PSTDotNetTrainingBatch5.Domain.csproj" />
   </ItemGroup>
 
 </Project>
