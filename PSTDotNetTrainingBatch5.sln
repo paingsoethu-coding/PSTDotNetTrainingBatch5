@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.Bag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.Domain", "PSTDotNetTrainingBatch5.Domain\PSTDotNetTrainingBatch5.Domain.csproj", "{3CF36573-DFED-4B74-934E-DC3E5365517F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.ConsoleApp3", "PSTDotNetTrainingBatch5.ConsoleApp3\PSTDotNetTrainingBatch5.ConsoleApp3.csproj", "{9EEEEDA2-42E4-4F99-ABD8-FDF126BC25A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{3CF36573-DFED-4B74-934E-DC3E5365517F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CF36573-DFED-4B74-934E-DC3E5365517F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CF36573-DFED-4B74-934E-DC3E5365517F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EEEEDA2-42E4-4F99-ABD8-FDF126BC25A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EEEEDA2-42E4-4F99-ABD8-FDF126BC25A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EEEEDA2-42E4-4F99-ABD8-FDF126BC25A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EEEEDA2-42E4-4F99-ABD8-FDF126BC25A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
