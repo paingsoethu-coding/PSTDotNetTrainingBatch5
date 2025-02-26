@@ -13,6 +13,7 @@ namespace PSTDotNetTrainingBatch5.BaganMapApi.Controllers
         {
             string folderPath = "Data/BaganMap.json"!;
             var jsonStr = System.IO.File.ReadAllText(folderPath);
+
             var result = JsonConvert.DeserializeObject<BaganMapResponseModel>(jsonStr)!;
 
             var lst = result.Tbl_BaganMapInfoDetailData.ToList();

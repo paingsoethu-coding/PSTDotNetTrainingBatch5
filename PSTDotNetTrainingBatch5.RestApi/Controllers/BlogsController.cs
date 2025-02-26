@@ -94,7 +94,7 @@ namespace PSTDotNetTrainingBatch5.RestApi.Controllers
             //_db.Entry(item).State = EntityState.Deleted; // တကယ်ဖြတ်သွားတာပါ
             _db.SaveChanges();
 
-            return Ok();
+            return Ok(item);
         }
     }
 }
