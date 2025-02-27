@@ -12,7 +12,12 @@ namespace PSTDotNetTrainingBatch5.RestApi.Controllers
     [ApiController]
     public class BlogsAdoDotNetController : ControllerBase
     {
-        private readonly string _connectionString = "Data Source= MSI\\SQLEXPRESS2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sasa; TrustServerCertificate=True";
+        private readonly string _connectionString;
+
+        public BlogsAdoDotNetController(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DbConnection")!;
+        }
 
         private readonly List<BlogViewModel> lst = new List<BlogViewModel>();
 

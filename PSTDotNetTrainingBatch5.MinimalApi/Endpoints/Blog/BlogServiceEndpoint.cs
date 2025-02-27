@@ -1,15 +1,14 @@
-﻿using Microsoft.Identity.Client;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using PSTDotNetTrainingBatch5.Domain.Features.Blog;
 
 namespace PSTDotNetTrainingBatch5.MinimalApi.Endpoints.Blog;
 
 public static class BlogServiceEndpoint
 {
-    private static readonly BlogService _blogService = new BlogService();
-
     public static void UseBlogServiceEndpoint(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/blogs", () =>
+        app.MapGet("/blogs", ([FromServices] IBlogService _blogService) =>
         {
             var model = _blogService.GetBlogs();
 
@@ -18,7 +17,7 @@ public static class BlogServiceEndpoint
         .WithName("GetServiceBlogs")
         .WithOpenApi();
 
-        app.MapGet("/blogs/{id}", (int id) =>
+        app.MapGet("/blogs/{id}", ([FromServices] IBlogService _blogService, int id) =>
         {
             var item = _blogService.GetBlog(id);
             if (item is null){return Results.BadRequest("No data found.");}
@@ -28,7 +27,7 @@ public static class BlogServiceEndpoint
         .WithName("GetServiceBlog")
         .WithOpenApi();
 
-        app.MapPost("/blogs", (TblBlog blog) =>
+        app.MapPost("/blogs", ([FromServices] IBlogService _blogService, TblBlog blog) =>
         {
             var model = _blogService.CreateBlog(blog);
 
@@ -37,7 +36,7 @@ public static class BlogServiceEndpoint
         .WithName("CreateServiceBlog")
         .WithOpenApi();
 
-        app.MapPut("/blogs/{id}", (int id, TblBlog blog) =>
+        app.MapPut("/blogs/{id}", ([FromServices] IBlogService _blogService, int id, TblBlog blog) =>
         {
             var item = _blogService.UpdateBlog(id, blog);
 
@@ -46,7 +45,7 @@ public static class BlogServiceEndpoint
         .WithName("UpdateServiceBlog")
         .WithOpenApi();
 
-        app.MapPatch("/blogs/{id}", (int id, TblBlog blog) =>
+        app.MapPatch("/blogs/{id}", ([FromServices] IBlogService _blogService, int id, TblBlog blog) =>
         {
             var item = _blogService.PatchBlog(id, blog);
             
@@ -55,7 +54,7 @@ public static class BlogServiceEndpoint
         .WithName("PatchServiceBlog")
         .WithOpenApi();
 
-        app.MapDelete("/blogs/{id}", (int id) =>
+        app.MapDelete("/blogs/{id}", ([FromServices] IBlogService _blogService, int id) =>
         {
             var item = _blogService.DeleteBlog(id);
             

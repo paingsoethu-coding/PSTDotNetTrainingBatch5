@@ -10,7 +10,7 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
 {
     public class AdoDotNetExample
     {
-        private readonly string _connectionString = "Data Source= MSI\\SQLEXPRESS2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sasa; TrustServerCertificate=True";
+        private readonly string _connectionString = AppSettings.ConnectionString;
         public void Read()
         {
             //Console.WriteLine("Connection String: " + _connectionString);
@@ -243,7 +243,6 @@ namespace PSTDotNetTrainingBatch5.ConsoleApp
             Console.WriteLine(result == 1 ? "Update Successful." : "Update Failed.");
         }
 
-        // အိမ်စာလုပ်ရန်
         public void Delete() 
         {
             Console.Write("Blog Id: ");

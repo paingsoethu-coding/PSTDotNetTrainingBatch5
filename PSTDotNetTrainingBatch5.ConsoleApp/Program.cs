@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
+using Microsoft.Extensions.DependencyInjection;
 using PSTDotNetTrainingBatch5.ConsoleApp;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -104,11 +105,22 @@ using System.Data.SqlClient;
 //eFCoreExample.Delete(12);
 //eFCoreExample.DeleteFlag(13);
 
-DapperExample2 dapperExample2 = new DapperExample2();
+//DapperExample2 dapperExample2 = new DapperExample2();
 //dapperExample2.Read();
-dapperExample2.Edit(1);
+//dapperExample2.Edit(1);
 
 //string query = " [BlogTitle] = @BlogTitle, ";
 //Console.WriteLine(query.Substring(0, query.Length - 2)); // Substring Delete လုပ်တာပါ
+
+
+// Ado.Net Dependency Injection
+var services = new ServiceCollection().AddSingleton<AdoDotNetExample>()
+    .BuildServiceProvider();
+
+// ံေိ်္ိ္HomeWork (Ado, Dapper, EFcore, and RestApi) Using DI
+
+var adoDotNetExample = services.GetRequiredService<AdoDotNetExample>();
+adoDotNetExample.Read();
+
 
 Console.ReadKey();

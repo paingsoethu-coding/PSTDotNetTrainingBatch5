@@ -3,14 +3,11 @@ using PSTDotNetTrainingBatch5.Database.Models;
 
 namespace PSTDotNetTrainingBatch5.Domain.Features.Blog;
 
-public class BlogService : IBlogService
+public  class BlogV2Service : IBlogService
 {
-    // Crt + R and Crt + I က Service က Interface ကိုထုတ်ပေးတာပါ။
-    // For Easy to maintain more version of services
-
     private readonly AppDbContext _db;
 
-    public BlogService(AppDbContext db)
+    public BlogV2Service(AppDbContext db)
     {
         _db = db;
     }
