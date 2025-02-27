@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using System.Net;
-using System.Text.Json.Serialization;
-using Newtonsoft.Json;
+using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace PSTDotNetTrainingBatch5.ConsoleApp3;
@@ -48,7 +43,7 @@ public class HttpClientExample
     }
 
     // POST, PUT, PATCH are support for body
-    public async Task Create(string title, string body, int userId) 
+    public async Task Create(string title, string body, int userId)
     {
         PostModel requestModel = new PostModel()
         {
@@ -59,7 +54,7 @@ public class HttpClientExample
 
         var jsonRequest = JsonConvert.SerializeObject(requestModel);
         var content = new StringContent(jsonRequest,
-            Encoding.UTF8, Application.Json ); //"application/json" same with last one
+            Encoding.UTF8, Application.Json); //"application/json" same with last one
         var response = await _client.PostAsync(_postEndpoint, content); // .Result can also be used
 
         if (response.IsSuccessStatusCode)
