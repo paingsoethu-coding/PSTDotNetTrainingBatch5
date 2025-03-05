@@ -1,15 +1,7 @@
 ﻿using Dapper;
 using PSTDotNetTrainingBatch5.ConsoleApp.Models;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PSTDotNetTrainingBatch5.ConsoleApp
 {

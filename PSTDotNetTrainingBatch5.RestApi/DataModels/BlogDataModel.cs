@@ -1,4 +1,4 @@
-﻿namespace PSTDotNetTrainingBatch5.RestApi.DataModels
+﻿namespace PSTDotNetTrainingBatch5.RestApi4.DataModels
 {
     public class BlogDataModel
     {

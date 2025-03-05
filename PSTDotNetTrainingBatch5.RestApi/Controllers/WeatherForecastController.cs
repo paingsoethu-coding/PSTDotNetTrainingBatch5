@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace PSTDotNetTrainingBatch5.RestApi.Controllers
+namespace PSTDotNetTrainingBatch5.RestApi4.Controllers
 {
     [ApiController]
     [Route("[controller]")]

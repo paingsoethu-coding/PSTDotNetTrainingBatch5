@@ -85,7 +85,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 //builder.Services.AddScoped<IBlogService, BlogService>();
-builder.Services.AddScoped<IBlogService, BlogV2Service>();
+builder.Services.AddScoped<IBlogServiceV2, BlogV2Service>();
 
 
 

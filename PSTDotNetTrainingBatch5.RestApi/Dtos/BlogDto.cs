@@ -1,4 +1,4 @@
-﻿namespace PSTDotNetTrainingBatch5.RestApi.Dtos
+﻿namespace PSTDotNetTrainingBatch5.RestApi4.Dtos
 {
     public class BlogDto
     {

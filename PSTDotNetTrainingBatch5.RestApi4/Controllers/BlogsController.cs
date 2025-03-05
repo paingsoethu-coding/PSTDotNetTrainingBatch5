@@ -1,62 +1,80 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PSTDotNetTrainingBatch5.Database.Models;
 
-namespace PSTDotNetTrainingBatch5.Domain.Features.Blog;
+namespace PSTDotNetTrainingBatch5.RestApi4.Controllers;
 
-public  class BlogV2Service : IBlogServiceV2
+[Route("api/[controller]")]
+[ApiController]
+public class BlogsController : ControllerBase
 {
     private readonly AppDbContext _db;
 
-    public BlogV2Service(AppDbContext db)
+    public BlogsController(AppDbContext db)
     {
         _db = db;
     }
 
-    public async Task<List<TblBlog>> GetBlogs()
+    [HttpGet]
+    public async Task<IActionResult> GetBlogs()
     {
-        var model = await _db.TblBlogs.AsNoTracking().ToListAsync();
+        var lst = await _db.TblBlogs
+            .AsNoTracking()
+            .Where(x => x.DeleteFlag == false)
+            .ToListAsync();
 
-        return model;
+        return Ok(lst);
     }
 
-    public async Task<TblBlog?> GetBlog(int id)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetBlog(int id)
     {
         var item = await _db.TblBlogs
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.BlogId == id);
-        return item;
+        if (item is null) { return NotFound(); }
+
+        return Ok(item);
     }
 
-    public async Task<TblBlog> CreateBlog(TblBlog blog)
+    [HttpPost]
+    public async Task<IActionResult> CreateBlog(TblBlog blog)
     {
         await _db.TblBlogs.AddAsync(blog);
         await _db.SaveChangesAsync();
-        return blog;
+
+        return Ok(blog);
     }
 
-    public async Task<TblBlog?> UpdateBlog(int id, TblBlog blog)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateBlog(int id, TblBlog blog)
     {
         var item = await _db.TblBlogs
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.BlogId == id);
-        if (item is null) return null;
-       
+        if (item is null) { return NotFound(); }
+
         item.BlogTitle = blog.BlogTitle;
         item.BlogAuthor = blog.BlogAuthor;
         item.BlogContent = blog.BlogContent;
 
         _db.Entry(item).State = EntityState.Modified;
         await _db.SaveChangesAsync();
-        return blog;
+
+        return Ok(item);
     }
 
-    public async Task<TblBlog?> PatchBlog(int id, TblBlog blog)
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchBlogs(int id, TblBlog blog)
     {
-        var item = await _db.TblBlogs
+        var item =  await _db.TblBlogs
             .AsNoTracking()
+            .Where(x => x.DeleteFlag == false)
             .FirstOrDefaultAsync(x => x.BlogId == id);
-        if (item is null) return null;
-        
+
+        if (item is null) { return NotFound(); }
+
         if (!string.IsNullOrEmpty(blog.BlogTitle))
         {
             item.BlogTitle = blog.BlogTitle;
@@ -72,24 +90,24 @@ public  class BlogV2Service : IBlogServiceV2
 
         _db.Entry(item).State = EntityState.Modified;
         await _db.SaveChangesAsync();
-        return blog;
+
+        return Ok(item);
     }
 
-    public async Task<bool?> DeleteBlog(int id)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteBlogs(int id)
     {
         var item = await _db.TblBlogs
             .AsNoTracking()
+            .Where(x => x.DeleteFlag == false)
             .FirstOrDefaultAsync(x => x.BlogId == id);
 
-        if (item is null) return null;
-        
+        if (item is null) { return NotFound(); }
+
         item.DeleteFlag = true;
-        //_db.Entry(item).State = EntityState.Deleted;
         _db.Entry(item).State = EntityState.Modified;
-        var result = await _db.SaveChangesAsync();
+        await _db.SaveChangesAsync();
 
-        return result > 0;
+        return Ok(item);
     }
-
 }
-

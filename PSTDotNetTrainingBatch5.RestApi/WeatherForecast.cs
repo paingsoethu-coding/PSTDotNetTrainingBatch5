@@ -1,4 +1,4 @@
-namespace PSTDotNetTrainingBatch5.RestApi
+namespace PSTDotNetTrainingBatch5.RestApi4
 {
     public class WeatherForecast
     {

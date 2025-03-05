@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PSTDotNetTrainingBatch5.Database.Models;
-using PSTDotNetTrainingBatch5.RestApi.DataModels;
-using PSTDotNetTrainingBatch5.RestApi.ViewModels;
+using PSTDotNetTrainingBatch5.RestApi4.DataModels;
+using PSTDotNetTrainingBatch5.RestApi4.ViewModels;
 using System.Collections.Generic;
 using System.Data;
 
-namespace PSTDotNetTrainingBatch5.RestApi.Controllers
+namespace PSTDotNetTrainingBatch5.RestApi4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

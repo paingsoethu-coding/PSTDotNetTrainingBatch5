@@ -1,4 +1,4 @@
-﻿namespace PSTDotNetTrainingBatch5.RestApi.ViewModels
+﻿namespace PSTDotNetTrainingBatch5.RestApi4.ViewModels
 {
     public class BlogViewModel
     {

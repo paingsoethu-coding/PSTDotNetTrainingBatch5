@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PSTDotNetTrainingBatch5.Database.Models;
 
-namespace PSTDotNetTrainingBatch5.RestApi.Controllers
+namespace PSTDotNetTrainingBatch5.RestApi4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -32,6 +32,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.Res
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.RestApi3", "PSTDotNetTrainingBatch5.RestApi3\PSTDotNetTrainingBatch5.RestApi3.csproj", "{3C9B2DB5-28E1-4251-AB0C-66084260BCD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.ConsoleApp4", "PSTDotNetTrainingBatch5.ConsoleApp4\PSTDotNetTrainingBatch5.ConsoleApp4.csproj", "{BD9EC008-28A6-457D-A0BD-22289E02750F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSTDotNetTrainingBatch5.RestApi4", "PSTDotNetTrainingBatch5.RestApi4\PSTDotNetTrainingBatch5.RestApi4.csproj", "{ADA4EA4C-B890-4473-8124-672F14E517A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +90,14 @@ Global
 		{3C9B2DB5-28E1-4251-AB0C-66084260BCD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C9B2DB5-28E1-4251-AB0C-66084260BCD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C9B2DB5-28E1-4251-AB0C-66084260BCD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD9EC008-28A6-457D-A0BD-22289E02750F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD9EC008-28A6-457D-A0BD-22289E02750F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD9EC008-28A6-457D-A0BD-22289E02750F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD9EC008-28A6-457D-A0BD-22289E02750F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADA4EA4C-B890-4473-8124-672F14E517A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADA4EA4C-B890-4473-8124-672F14E517A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADA4EA4C-B890-4473-8124-672F14E517A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADA4EA4C-B890-4473-8124-672F14E517A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
