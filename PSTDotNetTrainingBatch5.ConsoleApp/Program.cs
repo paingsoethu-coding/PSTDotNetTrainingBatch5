@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 //Console.Read();
 //Console.ReadKey();
 
-#region
+#region Note
 // value: data-type အမျိုးအစားတွေကို ဖော်ပြနေတာကိုမေးရန်။
 
 //Console.ReadLine();
