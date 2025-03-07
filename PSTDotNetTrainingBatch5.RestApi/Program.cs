@@ -45,6 +45,7 @@ var builder = WebApplication.CreateBuilder(args);
 // 8. Services လိုကောင်မျိုးတွေကိုဆိုရင်တော့  ှSingleTon ကိုမသုံးတာကောင်းပါတယ်။ ပြန်ပေးလာမယ့် values တွေက
 //    တစ်ခုနဲတစ်ခုမတူနိုင်တာကြောင့်ပါ။
 // 9. ဒီကောင်တွေမှာကိုဆီ Life-time တွေရှိကျပါတယ်။
+// 10.*** API request အရေအတွက်ကတော့ limit လုပ်မထားပါဘူး ***
 
 //    DI ရဲ့ Scoped life cycle တွေဆိုတာဘာလဲ
 // 1. သူကကျတော့ Request တစ်ခုဆီအတွက်ကို instance တစ်ခုဆီပေးတယ်။ သူက Request တစ်ခုကနေပြီးတော့
