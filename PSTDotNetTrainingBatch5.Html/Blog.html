@@ -33,6 +33,22 @@
     </button>
     <button type="button" id="btnSave" class="btn btn-success">Save</button>
 
+    <table class="table table-striped table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody id="tblBlogs">
+
+        </tbody>
+    </table>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -61,50 +77,180 @@
             const author = $("#txtAuthor").val();
             const content = $("#txtContent").val();
 
+            let lst = getData(); // get data from local storage
+
+            if (editId != null) {
+                // update
+                lst = updateBlog(title, author, content);
+                alert('Update Successfully');
+            }
+            else {
+                // create
+                lst = createBlog(title, author, content);
+                // console.log( createBlog(title, author, content) );
+                alert('Save Successfully');
+            }
+
+            const jsonStr = JSON.stringify(lst);
+            localStorage.setItem('blogs', jsonStr);
+
+            loadData();
+            clearControls();
+        });
+
+        $(document).ready(function () {
+            loadData();
+        })
+
+        // Create
+        function createBlog(title, author, content) {
+            let lst = getData(); // get data from local storage
+
             const blog = {
+                id: uuidv4(),
                 title: title,
                 author: author,
                 content: content,
             };
+            lst.push(blog);
 
-            const jsonStr = JSON.stringify(blog);
-            localStorage.setItem("blogs", jsonStr);
-        });
+            return lst; // return the Created list
+        }
+
+        // Update
+        function updateBlog(title, author, content) {
+            let lst = getData();
+
+            let index = lst.findIndex(x => x.id == editId); // find the index of the blog to be updated
+            if (index != -1) {
+                lst[index].title = title; // update the title
+                lst[index].author = author; // update the author
+                lst[index].content = content; // update the content
+            }
+
+            editId = null; // reset editId after updating
+
+            return lst; // return the Updated list
+        }
+
+        // Read
+        function loadData() {
+            let lst = getData(); // get data from local storage
+            //let trs = '';
+            $('#tblBlogs').html(''); // clear the table before loading new data if i want to use append method.
+            for (let i = 0; i < lst.length; i++) {
+                const blog = lst[i]; // (``) is called backtick and it supports multi-line strings for jS
+                // <button type="button" class="btn btn-warning btn-sm btn-edit" onclick="editBlog('${blog.id}')">Edit</button>
+
+                // Testing the data attribute for the edit button.
+                const tr = `<tr>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm btn-edit" data-blog-id="${blog.id}">Edit</button>
+                    </td>
+                    <td> 
+                        <button type="button" class="btn btn-danger btn-sm btn-delete" data-blog-id="${blog.id}">Delete</button>
+                    </td>       
+                    <td>${i + 1}</td>
+                    <td>${blog.title}</td>
+                    <td>${blog.author}</td>
+                    <td>${blog.content}</td>
+                </tr>`;
+                $('#tblBlogs').append(tr); // append is used to add new data to the end of the list. one by one.
+                //trs += tr;
+            }
+            //$('#tblBlogs').html(trs);
+
+            bindEditButton(); // bind the edit button after loading data
+            bindDeleteButton(); // bind the delete button after loading data
+        }
+
+        function getData() {
+            let lst = localStorage.getItem('blogs');
+            if (lst == null) {
+                let = [];
+            }
+            else {
+                lst = JSON.parse(lst);
+            }
+            return lst;
+        }
+
+        let editId = null; // global variable for edit id
+        // Edit
+        function bindEditButton() {
+            $('.btn-edit').click(function () {
+                let id = $(this).data('blog-id'); // get the data attribute value
+                //console.log({ id });
+                let lst = getData();
+
+                let filterList = lst.filter(x => x.id == id); // It`s only show array.
+                let item = filterList[0];
+                //console.log({item});
+
+                $("#txtTitle").val(item.title); // get style
+                $("#txtAuthor").val(item.author);
+                $("#txtContent").val(item.content);
+                editId = item.id;
+            })
+        }
+
+        function bindDeleteButton() {
+            $('.btn-delete').click(function () {
+                let result = confirm('Are you sure to delete this blog?');
+                if (!result) return; // if user clicks cancel, do nothing
+                
+                let id = $(this).data('blog-id'); // get the data attribute value
+                //console.log({ id });
+
+                let lst = getData();
+
+                lst = lst.filter(x => x.id != id); // If I have 10 and it has this != id, so, this will show 9 definitely.
+
+                const jsonStr = JSON.stringify(lst);
+                localStorage.setItem('blogs', jsonStr);
+
+                editId = null; // reset editId after deleting
+
+                clearControls();
+                alert('Delete Successfully');
+                loadData();                
+            })
+        }
 
         // Localstorage and sessionstorage have same codes but only Tab storage style difference.
-        $(document).ready(function () {
-            let lst = localStorage.getItem("blogs"); // check room
-            console.log(lst);
+        // $(document).ready(function () {
+        //     let lst = localStorage.getItem("blogs"); // check room
+        //     console.log(lst);
 
-            if (!lst) {
-                lst = []; // ✅ Initialize as an empty array if null
-            } else {
-                lst = JSON.parse(lst); // ✅ Parse stored JSON data
-            }
+        //     if (!lst) {
+        //         lst = []; // ✅ Initialize as an empty array if null
+        //     } else {
+        //         lst = JSON.parse(lst); // ✅ Parse stored JSON data
+        //     }
 
-            // if (lst == null) {
-            //     lst = [];
-            // } else {
-            //     lst = JSON.parse(lst);
-            // }
+        //     // if (lst == null) {
+        //     //     lst = [];
+        //     // } else {
+        //     //     lst = JSON.parse(lst);
+        //     // }
 
-            const blog = {
-                title: "title",
-                author: "author",
-                content: "content",
-            };
+        //     const blog = {
+        //         title: "title",
+        //         author: "author",
+        //         content: "content",
+        //     };
 
-            if (!Array.isArray(lst)) {
-                lst = []; // ✅ Ensure it's an array
-            }
+        //     if (!Array.isArray(lst)) {
+        //         lst = []; // ✅ Ensure it's an array
+        //     }
 
-            lst.push(blog); // ✅ Now .push() will work
+        //     lst.push(blog); // ✅ Now .push() will work
 
-            //lst.push(blog);
+        //     //lst.push(blog);
 
-            const jsonStr = JSON.stringify(lst);
-            localStorage.setItem("blogs", jsonStr);
-        });
+        //     const jsonStr = JSON.stringify(lst);
+        //     localStorage.setItem("blogs", jsonStr);
+        // });
 
         function uuidv4() {
             return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) =>
@@ -115,7 +261,7 @@
             );
         }
 
-        console.log(uuidv4());
+        //console.log(uuidv4());
         // no room => create room
         // if exist => create object
     </script>

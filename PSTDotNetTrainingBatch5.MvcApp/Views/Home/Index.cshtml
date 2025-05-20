@@ -1,0 +1,17 @@
+﻿@model HomeResponseModel
+@{
+    ViewData["Title"] = "Home Page";
+
+    // Razor syntax
+
+    string message = "Hello From Razor";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@message</h1>
+    <h1 class="display-4">@ViewBag.Message</h1>
+    <h1 class="display-4">@ViewData["Message2"]</h1>
+    <h1 class="display-4">@Model.AlertMessage</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
